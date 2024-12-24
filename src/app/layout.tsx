@@ -34,7 +34,7 @@ export default function RootLayout({
             {children}
           </body>
         </ClerkProvider>
-      </ConvexClientProvider>
+      </ConvexClientProvider> 
     </html>
   );
 }
