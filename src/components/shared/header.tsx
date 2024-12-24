@@ -3,6 +3,7 @@ import Link from "next/link";
 import logo from "@/images/logo.png";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { Button } from "../ui/button";
+import SearchBar from "../search-bar";
 export default function Header() {
   return (
     <header className="w-full border-b">
@@ -15,7 +16,7 @@ export default function Header() {
               alt="logo"
               height={100}
               width={100}
-              className="w-24 lg:w-28"
+              className="w-24 lg:w-28 text-primary-foreground"
             />
           </Link>
           {/* auth */}
@@ -33,7 +34,7 @@ export default function Header() {
           </div>
         </div>
         <div className="w-full lg:max-w-2xl">
-            
+          <SearchBar />
         </div>
       </div>
     </header>
