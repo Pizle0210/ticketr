@@ -17,3 +17,5 @@ export const getUserTicketForEvent = query({
     return ticket;
   },
 });
+
+
