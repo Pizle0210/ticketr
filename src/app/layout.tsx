@@ -29,19 +29,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ConvexClientProvider>
-        <ClerkProvider dynamic>
-          <SyncUserWithConvex>
-            <body
-              className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-            >
-              <Header />
-              {children}
-              <Footer />
-            </body>
-          </SyncUserWithConvex>
-        </ClerkProvider>
-      </ConvexClientProvider>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <ConvexClientProvider>
+          <ClerkProvider dynamic>
+            <Header />
+            <SyncUserWithConvex />
+            {children}
+            <Footer />
+          </ClerkProvider>
+        </ConvexClientProvider>
+      </body>
     </html>
   );
 }
