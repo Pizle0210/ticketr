@@ -88,7 +88,7 @@ console.log("Image URL:", imgUrl);
           <div>
             <div className="flex flex-col items-start gap-2">
               {isEventOwner && (
-                <span className="inline-flex items-center gap-1 rounded-full bg-primary/80 px-2 py-1 text-xs font-medium text-white">
+                <span className="inline-flex items-center gap-1 rounded-full bg-primary/90 px-2 py-1 text-xs font-medium text-white">
                   <StarIcon className="h-3 w-3" />
                   Your Event
                 </span>
