@@ -26,7 +26,7 @@ export default function EventList() {
     .sort((a, b) => b.eventDate - a.eventDate);
 
   return (
-    <div className="px- mx-auto w-[min(100%,100%)] sm:px-6 lg:px-8">
+    <div className="px-4 mx-auto w-[min(100%,100%)] sm:px-4 max-sm:mt-10 lg:px-4">
       {/* header */}
       <div className="mb-8 flex flex-col items-center justify-between max-sm:space-y-4 sm:flex-row">
         <div>
