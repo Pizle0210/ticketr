@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { api } from "../../convex/_generated/api";
 import { cn, useStorageUrl } from "@/lib/utils";
 import Image from "next/image";
-import { CalendarDays, MapPin, PencilIcon, StarIcon, Ticket } from "lucide-react";
+import { CalendarDays, Check, MapPin, PencilIcon, StarIcon, Ticket } from "lucide-react";
 
 export default function EventCard({ eventId }: { eventId: Id<"events"> }) {
   const router = useRouter();
@@ -60,10 +60,22 @@ export default function EventCard({ eventId }: { eventId: Id<"events"> }) {
     return null;
   };
 
-    console.log("Event:", event);
-console.log("Availability:", availability);
-console.log("Image URL:", imgUrl);
-
+if (userTicket) {
+  return (
+    <div className="mt-4 flex items-center justify-between rounded-lg border border-green-100 bg-green-50 p-3">
+      <div className="flex items-center">
+        <Check className="mr-2 h-5 w-5 text-green-600" />
+        <span className="font-medium text-green-700">You have a ticket!</span>
+      </div>
+      <button
+        onClick={() => router.push(`/tickets/${userTicket._id}`)}
+        className="flex items-center gap-1 rounded-full bg-green-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm transition-colors duration-200 hover:bg-green-700"
+      >
+        View your ticket
+      </button>
+    </div>
+  );
+}
   return (
     <div
       className={`relative cursor-pointer overflow-hidden rounded-lg border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:shadow-lg ${isPastEvent ? `opacity-75 hover:opacity-100` : ""}`}
