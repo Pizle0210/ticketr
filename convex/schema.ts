@@ -8,7 +8,6 @@ export default defineSchema({
     price: v.number(),
     currency: v.string(),
     totalTickets: v.number(),
-    availableTickets: v.number(),
     location: v.string(),
     eventDate: v.number(),
     category: v.string(),
