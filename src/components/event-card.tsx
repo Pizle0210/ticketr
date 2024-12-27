@@ -8,6 +8,7 @@ import { api } from "../../convex/_generated/api";
 import { cn, useStorageUrl } from "@/lib/utils";
 import Image from "next/image";
 import { CalendarDays, Check, CircleArrowRight, LoaderCircle, MapPin, PencilIcon, StarIcon, Ticket, XCircle } from "lucide-react";
+import PurchaseTicket from "./purchase-ticket";
 
 export default function EventCard({ eventId }: { eventId: Id<"events"> }) {
   const router = useRouter();
