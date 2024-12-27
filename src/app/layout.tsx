@@ -6,6 +6,7 @@ import ConvexClientProvider from "@/components/convex-client-provider";
 import Header from "@/components/shared/header";
 import Footer from "@/components/shared/footer";
 import SyncUserWithConvex from "@/components/sync-user-with-convex";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,6 +38,7 @@ export default function RootLayout({
             <Header />
             <SyncUserWithConvex />
             {children}
+            <Toaster />
             <Footer />
           </ClerkProvider>
         </ConvexClientProvider>

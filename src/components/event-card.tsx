@@ -232,7 +232,7 @@ export default function EventCard({ eventId }: { eventId: Id<"events"> }) {
           <div className="flex items-center text-gray-600">
             <Ticket size={18} className="mr-2" />
             <span>
-              {availability.totalTickets - availability.purchasedCount}/{" "}
+              {availability.totalTickets - availability.purchasedCount}/
               {availability.totalTickets} available
 
               {!isPastEvent && availability.activeOffers > 0 && (
