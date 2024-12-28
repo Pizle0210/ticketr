@@ -55,23 +55,29 @@ export default function Header() {
               <UserButton />
             </div>
           </SignedIn>
+          <SignedOut>
+            <SignInButton mode="modal">
+              <button className="rounded-lg border border-gray-300 bg-gray-100 px-3 py-1.5 text-sm text-gray-800 transition hover:bg-gray-200">
+                Sign In
+              </button>
+            </SignInButton>
+          </SignedOut>
         </div>
 
         {/* mobile action button */}
-        <div className="lg:hidden w-full flex justify-center gap-3">
+        <div className="flex w-full justify-center gap-3 lg:hidden">
           <SignedIn>
-              <Link href={"/seller"} className=" flex-1">
-                <button className="rounded-lg w-full bg-primary/80 px-3 py-1.5 text-sm text-white shadow-lg transition-all hover:bg-primary hover:shadow-none">
-                  Sell Tickets
-                </button>
-              </Link>
-              <Link href={"/tickets"} className="flex-1">
-                <button className="w-full rounded-lg border border-gray-300 bg-gray-100 px-3 py-1.5 text-sm text-gray-800 shadow-lg transition-all hover:bg-gray-200 hover:shadow-none">
-                  My Tickets
-                </button>
-              </Link>
+            <Link href={"/seller"} className="flex-1">
+              <button className="w-full rounded-lg bg-primary/80 px-3 py-1.5 text-sm text-white shadow-lg transition-all hover:bg-primary hover:shadow-none">
+                Sell Tickets
+              </button>
+            </Link>
+            <Link href={"/tickets"} className="flex-1">
+              <button className="w-full rounded-lg border border-gray-300 bg-gray-100 px-3 py-1.5 text-sm text-gray-800 shadow-lg transition-all hover:bg-gray-200 hover:shadow-none">
+                My Tickets
+              </button>
+            </Link>
           </SignedIn>
-
         </div>
       </div>
     </header>
