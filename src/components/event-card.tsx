@@ -106,6 +106,7 @@ export default function EventCard({ eventId }: { eventId: Id<"events"> }) {
         </div>
       );
     }
+
     // ticket owner
           if (userTicket) {
             return (
@@ -169,6 +170,7 @@ export default function EventCard({ eventId }: { eventId: Id<"events"> }) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
         </div>
       )}
+
       {/* event details */}
       <div className={`p-6 ${imgUrl ? "relative" : ""}`}>
         <div className="flex items-center justify-between">
@@ -236,10 +238,10 @@ export default function EventCard({ eventId }: { eventId: Id<"events"> }) {
               {availability.totalTickets} available
 
               {!isPastEvent && availability.activeOffers > 0 && (
-                <span>
+                <span className="text-yellow-600">
                   ({availability.activeOffers}{" "}
                   {availability.activeOffers === 1 ? "person" : "people"} trying
-                  to buy )
+                  to buy)
                 </span>
               )}
             </span>
