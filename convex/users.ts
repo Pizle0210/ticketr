@@ -1,6 +1,8 @@
 import { v } from "convex/values";
 import { mutation, query } from "./_generated/server";
 
+
+// for stripe
 export const getUsersStripeConnectId = query({
   args: { userId: v.string() },
   handler: async (ctx, args) => {
