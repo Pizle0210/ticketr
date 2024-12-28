@@ -15,7 +15,7 @@ import JoinQueue from "@/components/join-queue";
 import BackButton from "@/components/ui/back-button";
 import Link from "next/link";
 
-export default function page() {
+export default function EventPage() {
   const { user } = useUser();
   const param = useParams();
   const event = useQuery(api.events.getById, {
@@ -29,7 +29,7 @@ export default function page() {
   if (!event || !availability) {
     return (
       <div className="flex min-h-screen items-center justify-center">
-        <Spinner />
+        <Spinner /> 
       </div>
     );
   }
