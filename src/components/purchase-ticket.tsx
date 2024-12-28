@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { useRouter } from "next/navigation";
@@ -5,7 +6,7 @@ import type { Id } from "../../convex/_generated/dataModel";
 import { useUser } from "@clerk/nextjs";
 import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Ticket } from "lucide-react";
 import ReleaseTicket from "./release-ticket";
 

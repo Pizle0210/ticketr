@@ -12,6 +12,8 @@ import Image from "next/image";
 import { CalendarDays, MapPin, Ticket, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import JoinQueue from "@/components/join-queue";
+import BackButton from "@/components/ui/back-button";
+import Link from "next/link";
 
 export default function page() {
   const { user } = useUser();
@@ -84,7 +86,7 @@ export default function page() {
                       <Ticket className="mr-2 h-5 w-5 text-blue-600" />
                       <span className="text-sm font-medium">Price</span>
                     </div>
-                    <p className="text-gray-900 font-semibold">
+                    <p className="font-semibold text-gray-900">
                       <span className="font-bold">{event.currency}</span>{" "}
                       {event.price.toLocaleString(undefined, {
                         minimumFractionDigits: 2,
@@ -99,8 +101,8 @@ export default function page() {
                       <span className="text-sm font-medium">Availability</span>
                     </div>
                     <p className="text-gray-900">
-                      {availability.totalTickets - availability.purchasedCount}
-                      /{availability.totalTickets} left
+                      {availability.totalTickets - availability.purchasedCount}/
+                      {availability.totalTickets} left
                     </p>
                   </div>
                 </div>
@@ -140,6 +142,9 @@ export default function page() {
             </div>
           </div>
         </div>
+        <BackButton className="mt-4 rounded-lg bg-gray-400 text-white hover:bg-gray-600">
+          <Link href={`/`}>back</Link>
+        </BackButton>
       </div>
     </div>
   );
