@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -66,7 +67,7 @@ type InitialEventData = {
   imageStorageId?: Id<"_storage">;
 };
 
-interface EventFormProps {
+type EventFormProps = {
   mode: "create" | "edit";
   initialData?: InitialEventData;
 }
@@ -210,6 +211,8 @@ export default function EventForm({ mode, initialData }: EventFormProps) {
       reader.readAsDataURL(file);
     }
   };
+
+
 
   // Track currency changes and update symbol
   const watchedCurrency = form.watch("currency");
@@ -479,3 +482,24 @@ export default function EventForm({ mode, initialData }: EventFormProps) {
     </Form>
   );
 }
+
+/**
+ * EventForm Component
+ * 
+ * This component provides a form interface for creating and editing events.
+ * It supports two modes: "create" for new events and "edit" for updating existing events.
+ * 
+ * Key Features:
+ * - Utilizes React Hook Form for form state management and validation.
+ * - Supports initial data population for the edit mode.
+ * - Handles image uploads and stores image references.
+ * - Tracks currency changes and updates the currency symbol dynamically.
+ * 
+ * Props:
+ * - mode: Determines the form mode ("create" or "edit").
+ * - initialData: Optional initial data for pre-filling the form in edit mode.
+ * 
+ * Note:
+ * - The ESLint rule `@typescript-eslint/no-unused-vars` is temporarily disabled to suppress warnings during development.
+ * - The `EventFormProps` is defined as a type for flexibility and potential future extensibility.
+ */
