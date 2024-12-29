@@ -33,6 +33,9 @@ export const getById = query({
 });
 
 
+
+
+
 // Helper function to check ticket availability for an event
 export const checkAvailability = query({
   args: { eventId: v.id("events") },
