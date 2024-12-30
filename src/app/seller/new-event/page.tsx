@@ -4,11 +4,9 @@ export default function NewEventPage() {
   return (
     <div className="mx-auto max-w-3xl p-6">
       <div className="overflow-hidden rounded-lg bg-white shadow-lg">
-        <div className="bg-gradient-to-r from-blue-600 to-blue-800 px-6 py-8 text-white">
+        <div className="bg-gradient-to-r from-[#17BEBB] to-[#17BEBB]/80 px-6 py-8 text-white">
           <h2 className="text-2xl font-bold">Create New Event</h2>
-          <p className="mt-2 text-blue-100">
-            List your event and start selling tickets
-          </p>
+          <p className="mt-2">List your event and start selling tickets</p>
         </div>
 
         <div className="p-6">

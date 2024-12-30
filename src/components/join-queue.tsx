@@ -86,7 +86,7 @@ export default function JoinQueue({
             <button
               onClick={handleJoinQueue}
               disabled={isPastEvent || isEventOwner}
-              className="flex w-full items-center justify-center rounded-lg bg-blue-600 px-6 py-3 font-medium text-white shadow-md transition-colors duration-200 hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-gray-400"
+              className="flex w-full items-center justify-center rounded-lg bg-black/75 px-6 py-3 font-medium text-white shadow-md transition-colors duration-200 hover:bg-black disabled:cursor-not-allowed disabled:bg-gray-400"
             >
               Buy Ticket
             </button>

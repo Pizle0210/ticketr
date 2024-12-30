@@ -65,7 +65,7 @@ export default function EventPage() {
                 <div className="grid grid-cols-2 gap-6">
                   <div className="rounded-lg border border-gray-100 bg-gray-50 p-4">
                     <div className="mb-1 flex items-center text-gray-600">
-                      <CalendarDays className="mr-2 h-5 w-5 text-blue-600" />
+                      <CalendarDays className="mr-2 h-5 w-5 text-[#17BEBB]" />
                       <span className="text-sm font-medium">Date</span>
                     </div>
                     <p className="text-gray-900">
@@ -75,7 +75,7 @@ export default function EventPage() {
 
                   <div className="rounded-lg border border-gray-100 bg-gray-50 p-4">
                     <div className="mb-1 flex items-center text-gray-600">
-                      <MapPin className="mr-2 h-5 w-5 text-blue-600" />
+                      <MapPin className="mr-2 h-5 w-5 text-[#17BEBB]" />
                       <span className="text-sm font-medium">Location</span>
                     </div>
                     <p className="text-gray-900">{event.location}</p>
@@ -83,7 +83,7 @@ export default function EventPage() {
 
                   <div className="rounded-lg border border-gray-100 bg-gray-50 p-4">
                     <div className="mb-1 flex items-center text-gray-600">
-                      <Ticket className="mr-2 h-5 w-5 text-blue-600" />
+                      <Ticket className="mr-2 h-5 w-5 text-[#17BEBB]" />
                       <span className="text-sm font-medium">Price</span>
                     </div>
                     <p className="font-semibold text-gray-900">
@@ -97,7 +97,7 @@ export default function EventPage() {
 
                   <div className="rounded-lg border border-gray-100 bg-gray-50 p-4">
                     <div className="mb-1 flex items-center text-gray-600">
-                      <Users className="mr-2 h-5 w-5 text-blue-600" />
+                      <Users className="mr-2 h-5 w-5 text-[#17BEBB]" />
                       <span className="text-sm font-medium">Availability</span>
                     </div>
                     <p className="text-gray-900">
@@ -108,11 +108,11 @@ export default function EventPage() {
                 </div>
 
                 {/* Additional Event Information */}
-                <div className="rounded-lg border border-blue-100 bg-blue-50 p-6">
-                  <h3 className="mb-2 text-lg font-semibold text-blue-900">
+                <div className="rounded-lg border border-gray-100 bg-slate-100 p-6">
+                  <h3 className="mb-2 text-lg font-bold text-[#17BEBB]">
                     Event Information
                   </h3>
-                  <ul className="space-y-2 text-blue-700">
+                  <ul className="space-y-2">
                     <li>- Please arrive 30 minutes before the event starts</li>
                     <li>- Tickets are non-refundable</li>
                     <li>- Age restriction: 18+</li>
@@ -132,7 +132,7 @@ export default function EventPage() {
                     />
                   ) : (
                     <SignInButton>
-                      <Button className="w-full rounded-lg bg-gradient-to-r from-blue-600 to-blue-800 px-4 py-2 font-medium text-white shadow-md transition-all duration-200 hover:from-blue-700 hover:to-blue-900 hover:shadow-lg">
+                      <Button className="w-full rounded-lg bg-gradient-to-r from-[#17BEBB] to-[#17BEBB]/60 px-4 py-2 font-medium text-white shadow-md transition-all duration-200 hover:from-[#17BEBB] hover:to-[#17BEBB]/90 hover:shadow-lg">
                         Sign in to buy tickets
                       </Button>
                     </SignInButton>

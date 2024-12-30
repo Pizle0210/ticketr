@@ -22,7 +22,7 @@ import { useEffect, useRef, useState, useTransition } from "react";
 import Image from "next/image";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
-import { useStorageUrl } from "@/lib/utils";
+import { cn, useStorageUrl } from "@/lib/utils";
 import type { Id } from "../../convex/_generated/dataModel";
 import { api } from "../../convex/_generated/api";
 import {
@@ -70,7 +70,7 @@ type InitialEventData = {
 type EventFormProps = {
   mode: "create" | "edit";
   initialData?: InitialEventData;
-}
+};
 
 export default function EventForm({ mode, initialData }: EventFormProps) {
   const { user } = useUser();
@@ -108,7 +108,7 @@ export default function EventForm({ mode, initialData }: EventFormProps) {
     },
   });
 
-//   onsubmit
+  //   onsubmit
   async function onSubmit(values: FormData) {
     if (!user?.id) return;
 
@@ -175,7 +175,7 @@ export default function EventForm({ mode, initialData }: EventFormProps) {
 
           router.push(`/event/${initialData._id}`);
         }
-      } catch (error) {
+      } catch (error: unknown) {
         console.error("Failed to handle event:", error);
         toast(
           "Uh oh! Something went wrong.There was a problem with your request.",
@@ -194,7 +194,7 @@ export default function EventForm({ mode, initialData }: EventFormProps) {
       });
       const { storageId } = await result.json();
       return storageId;
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Failed to upload image:", error);
       return null;
     }
@@ -211,8 +211,6 @@ export default function EventForm({ mode, initialData }: EventFormProps) {
       reader.readAsDataURL(file);
     }
   };
-
-
 
   // Track currency changes and update symbol
   const watchedCurrency = form.watch("currency");
@@ -237,7 +235,10 @@ export default function EventForm({ mode, initialData }: EventFormProps) {
               <FormItem>
                 <FormLabel>Event Name</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input
+                    {...field}
+                    className="rounded-md border border-[#17BEBB] shadow-sm outline-none transition duration-150 ease-in-out focus:border-[#17BEBB] focus:ring focus:ring-[#17BEBB]"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -251,7 +252,10 @@ export default function EventForm({ mode, initialData }: EventFormProps) {
               <FormItem>
                 <FormLabel>Description</FormLabel>
                 <FormControl>
-                  <Textarea {...field} />
+                  <Textarea
+                    {...field}
+                    className="rounded-md border border-gray-300 shadow-sm transition duration-150 ease-in-out focus:border-[#17BEBB] focus:ring focus:ring-[#17BEBB]"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -265,33 +269,9 @@ export default function EventForm({ mode, initialData }: EventFormProps) {
               <FormItem>
                 <FormLabel>Location</FormLabel>
                 <FormControl>
-                  <Input {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="eventDate"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Event Date</FormLabel>
-                <FormControl>
                   <Input
-                    type="date"
                     {...field}
-                    onChange={(e) => {
-                      field.onChange(
-                        e.target.value ? new Date(e.target.value) : null,
-                      );
-                    }}
-                    value={
-                      field.value
-                        ? new Date(field.value).toISOString().split("T")[0]
-                        : ""
-                    }
+                    className="rounded-md border border-gray-300 shadow-sm transition duration-150 ease-in-out focus:border-[#17BEBB] focus:ring focus:ring-[#17BEBB]"
                   />
                 </FormControl>
                 <FormMessage />
@@ -300,7 +280,35 @@ export default function EventForm({ mode, initialData }: EventFormProps) {
           />
 
           {/* category and currency */}
-          <div className="flex gap-5">
+          <div className="flex justify-between">
+            <FormField
+              control={form.control}
+              name="eventDate"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Event Date</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="date"
+                      {...field}
+                      className="rounded-md border border-gray-300 shadow-sm transition duration-150 ease-in-out focus:border-[#17BEBB] focus:ring focus:ring-[#17BEBB]"
+                      onChange={(e) => {
+                        field.onChange(
+                          e.target.value ? new Date(e.target.value) : null,
+                        );
+                      }}
+                      value={
+                        field.value
+                          ? new Date(field.value).toISOString().split("T")[0]
+                          : ""
+                      }
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
             <FormField
               control={form.control}
               name="category"
@@ -351,7 +359,7 @@ export default function EventForm({ mode, initialData }: EventFormProps) {
                       <SelectContent>
                         {Object.entries(regions).map(([region, currencies]) => (
                           <SelectGroup key={region} className="mb-3">
-                            <SelectLabel className="bg-primary font-extrabold text-white">
+                            <SelectLabel className="bg-[#17BEBB] font-extrabold text-white">
                               {region}
                             </SelectLabel>
                             {Object.entries(currencies).map(
@@ -393,7 +401,7 @@ export default function EventForm({ mode, initialData }: EventFormProps) {
                       type="number"
                       {...field}
                       onChange={(e) => field.onChange(Number(e.target.value))}
-                      className="pl-[3.5rem]"
+                      className="rounded-md border border-gray-300 pl-[3.5rem] shadow-sm transition duration-150 ease-in-out focus:border-[#17BEBB] focus:ring focus:ring-[#17BEBB]"
                     />
                   </div>
                 </FormControl>
@@ -411,6 +419,7 @@ export default function EventForm({ mode, initialData }: EventFormProps) {
                 <FormControl>
                   <Input
                     type="number"
+                    className="rounded-md border border-gray-300 shadow-sm transition duration-150 ease-in-out focus:border-[#17BEBB] focus:ring focus:ring-[#17BEBB]"
                     {...field}
                     onChange={(e) => field.onChange(Number(e.target.value))}
                   />
@@ -431,6 +440,7 @@ export default function EventForm({ mode, initialData }: EventFormProps) {
                   <Image
                     src={imagePreview || currentImageUrl!}
                     alt="Preview"
+                    priority
                     fill
                     className="rounded-lg object-contain"
                   />
@@ -455,7 +465,7 @@ export default function EventForm({ mode, initialData }: EventFormProps) {
                   accept="image/*"
                   onChange={handleImageChange}
                   ref={imageInput}
-                  className="block w-full text-sm text-gray-500 file:mr-4 file:rounded-full file:border-0 file:bg-blue-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-blue-700 hover:file:bg-blue-100"
+                  className="hover:file:bg-[#17BEBB]/7 file:bg-[#17BEBB]/7 block w-full text-sm text-gray-500 file:mr-4 file:rounded-full file:border-0 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-[#17BEBB]"
                 />
               )}
             </div>
@@ -465,7 +475,13 @@ export default function EventForm({ mode, initialData }: EventFormProps) {
         <Button
           type="submit"
           disabled={isPending}
-          className="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-blue-600 to-blue-800 px-4 py-2 font-medium text-white transition-all duration-200 hover:from-blue-700 hover:to-blue-900"
+          aria-busy={isPending}
+          className={cn(
+            "flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2 font-medium text-white transition-all duration-200",
+            mode === "edit"
+              ? "bg-gradient-to-br from-[#ff0079] to-teal-500 font-bold hover:bg-gradient-to-l hover:from-teal-500 hover:to-[#ff0079]"
+              : "bg-gradient-to-r from-[#17BEBB] to-[#17BEBB]/80 hover:from-[#17BEBB]/80 hover:to-[#17BEBB]",
+          )}
         >
           {isPending ? (
             <>
@@ -485,20 +501,20 @@ export default function EventForm({ mode, initialData }: EventFormProps) {
 
 /**
  * EventForm Component
- * 
+ *
  * This component provides a form interface for creating and editing events.
  * It supports two modes: "create" for new events and "edit" for updating existing events.
- * 
+ *
  * Key Features:
  * - Utilizes React Hook Form for form state management and validation.
  * - Supports initial data population for the edit mode.
  * - Handles image uploads and stores image references.
  * - Tracks currency changes and updates the currency symbol dynamically.
- * 
+ *
  * Props:
  * - mode: Determines the form mode ("create" or "edit").
  * - initialData: Optional initial data for pre-filling the form in edit mode.
- * 
+ *
  * Note:
  * - The ESLint rule `@typescript-eslint/no-unused-vars` is temporarily disabled to suppress warnings during development.
  * - The `EventFormProps` is defined as a type for flexibility and potential future extensibility.
