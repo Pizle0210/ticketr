@@ -7,6 +7,7 @@ import Header from "@/components/shared/header";
 import Footer from "@/components/shared/footer";
 import SyncUserWithConvex from "@/components/sync-user-with-convex";
 import { Toaster } from "@/components/ui/sonner";
+import Background from "@/components/background";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} relative min-h-screen ${geistMono.variable} antialiased`}
       >
         <ConvexClientProvider>
           <ClerkProvider dynamic>
@@ -42,6 +43,7 @@ export default function RootLayout({
             <Footer />
           </ClerkProvider>
         </ConvexClientProvider>
+        <Background />
       </body>
     </html>
   );

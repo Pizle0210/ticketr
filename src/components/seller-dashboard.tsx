@@ -68,7 +68,7 @@ export default function SellerDashboard() {
     <div className="mx-auto max-w-3xl p-6">
       <div className="overflow-hidden rounded-lg bg-white shadow-lg">
         {/* Header Section */}
-        <div className="bg-gradient-to-r from-blue-600 to-blue-800 px-6 py-8 text-white">
+        <div className="bg-black px-6 py-8 text-white">
           <h2 className="text-2xl font-bold">Seller Dashboard</h2>
           <p className="mt-2 text-blue-100">
             Manage your seller profile and payment settings
@@ -89,7 +89,7 @@ export default function SellerDashboard() {
                 <div className="flex justify-center gap-4">
                   <Link
                     href="/seller/new-event"
-                    className="flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700"
+                    className="flex items-center gap-2 rounded-lg bg-black px-4 py-2 text-white transition-colors hover:bg-black/70"
                   >
                     <Plus className="h-5 w-5" />
                     Create Event
@@ -287,7 +287,7 @@ export default function SellerDashboard() {
                 {accountStatus.isActive && (
                   <button
                     onClick={handleManageAccount}
-                    className="flex items-center rounded-lg bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700"
+                    className="flex items-center rounded-lg bg-black px-4 py-2 text-white transition-colors hover:bg-black/80"
                   >
                     <Cog className="mr-2 h-4 w-4" />
                     Seller Dashboard

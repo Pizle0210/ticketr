@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { api } from "../../convex/_generated/api";
 import { cn, useStorageUrl } from "@/lib/utils";
 import Image from "next/image";
-import { CalendarDays, Check, CircleArrowRight, LoaderCircle, MapPin, PencilIcon, StarIcon, Ticket, XCircle } from "lucide-react";
+import { CalendarDays, Check, CircleArrowRight, LayoutListIcon, LoaderCircle, MapPin, PencilIcon, StarIcon, Ticket, XCircle } from "lucide-react";
 import PurchaseTicket from "./purchase-ticket";
 
 export default function EventCard({ eventId }: { eventId: Id<"events"> }) {
@@ -164,6 +164,7 @@ export default function EventCard({ eventId }: { eventId: Id<"events"> }) {
           <Image
             src={imgUrl}
             alt={event.name}
+            fill
             className="object-cover"
             priority
           />
@@ -199,7 +200,7 @@ export default function EventCard({ eventId }: { eventId: Id<"events"> }) {
         <div className="ml-4 flex flex-col items-end gap-2">
           <span
             className={cn(
-              `rounded-full px-4 py-1.5 font-semibold ${isPastEvent ? "bg-gray-50 text-gray-500" : "bg-green-50 text-green-700"}`,
+              `rounded-full px-4 py-1.5 font-semibold ${isPastEvent ? "bg-gray-50 text-gray-500" : "bg-green-50 text-[#17BEBB]"}`,
             )}
           >
             {event.currency}{" "}
@@ -217,6 +218,11 @@ export default function EventCard({ eventId }: { eventId: Id<"events"> }) {
 
         {/* Event Details */}
         <div className="mt-4 space-y-3">
+          {/* category */}
+          <div className="category flex items-center text-gray-600">
+            <LayoutListIcon size={18} className="mr-2" />
+            <span>{event.category}</span>
+          </div>
           {/* location */}
           <div className="flex items-center text-gray-600">
             <MapPin size={18} className="mr-2" />
@@ -236,9 +242,8 @@ export default function EventCard({ eventId }: { eventId: Id<"events"> }) {
             <span>
               {availability.totalTickets - availability.purchasedCount}/
               {availability.totalTickets} available
-
               {!isPastEvent && availability.activeOffers > 0 && (
-                <span className="text-yellow-600">
+                <span className="text-[#17BEBB]">
                   ({availability.activeOffers}{" "}
                   {availability.activeOffers === 1 ? "person" : "people"} trying
                   to buy)
@@ -248,12 +253,12 @@ export default function EventCard({ eventId }: { eventId: Id<"events"> }) {
           </div>
         </div>
         {/* Event Description */}
-        <p className="mt-4 text-gray-600 text-sm line-clamp-2">
+        <p className="mt-4 line-clamp-2 text-sm text-gray-600">
           {event.description}
         </p>
 
-        <div onClick={(e)=>e.stopPropagation()}>
-              {!isPastEvent&& renderTicketStatus()}
+        <div onClick={(e) => e.stopPropagation()}>
+          {!isPastEvent && renderTicketStatus()}
         </div>
       </div>
     </div>
