@@ -64,7 +64,7 @@ export async function createStripeCheckoutSession({
   // Create Stripe Checkout Session
   const session = await stripe.checkout.sessions.create(
     {
-      payment_method_types: ["card","cashapp","amazon_pay"],
+      payment_method_types: ["card"],
       line_items: [
         {
           price_data: {
@@ -79,7 +79,7 @@ export async function createStripeCheckoutSession({
         },
       ],
       payment_intent_data: {
-        application_fee_amount: Math.round(event.price * 100 * 0.5),//5 percent fee
+        application_fee_amount: Math.round(event.price * 100 * 0.05),//5 percent fee
       },
       expires_at: Math.floor(Date.now() / 1000) + DURATIONS.TICKET_OFFER / 1000, // 30 minutes (stripe checkout minimum expiration time)
       mode: "payment",
