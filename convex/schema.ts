@@ -18,6 +18,7 @@ export default defineSchema({
 
   tickets: defineTable({
     eventId: v.id("events"),
+    currency: v.string(),
     userId: v.string(),
     purchasedAt: v.number(),
     status: v.union(
