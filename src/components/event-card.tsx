@@ -221,7 +221,7 @@ export default function EventCard({ eventId }: { eventId: Id<"events"> }) {
           </div>
           <div className="flex items-center text-gray-600">
             <MapPin size={18} className="mr-2" />
-            <span>{event.location}</span>
+            <span className="text-ellipsis line-clamp-1">{event.location}</span>
           </div>
           <div className="flex items-center text-gray-600">
             <CalendarDays size={18} className="mr-2" />
