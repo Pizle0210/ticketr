@@ -197,6 +197,7 @@ export const joinWaitingList = mutation({
 export const purchaseTicket = mutation({
   args: {
     eventId: v.id("events"),
+    currency:v.string(),
     userId: v.string(),
     waitingListId: v.id("waitingList"),
     paymentInfo: v.object({
@@ -204,11 +205,12 @@ export const purchaseTicket = mutation({
       amount: v.number(),
     }),
   },
-  handler: async (ctx, { eventId, userId, waitingListId, paymentInfo }) => {
+  handler: async (ctx, { eventId, userId,currency, waitingListId, paymentInfo }) => {
     console.log("Starting purchaseTicket handler", {
       eventId,
       userId,
       waitingListId,
+      currency
     });
 
     // Verify waiting list entry exists and is valid
@@ -251,12 +253,14 @@ export const purchaseTicket = mutation({
       throw new Error("Event is no longer active");
     }
 
+
     try {
       console.log("Creating ticket with payment info", paymentInfo);
       // Create ticket with payment info
       await ctx.db.insert("tickets", {
         eventId,
         userId,
+        currency,
         purchasedAt: Date.now(),
         status: TICKET_STATUS.VALID,
         paymentIntentId: paymentInfo.paymentIntentId,
