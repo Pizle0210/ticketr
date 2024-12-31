@@ -16,6 +16,8 @@ export type Metrics = {
 // Initialize rate limiter
 //
 
+
+//& get all
 export const get = query({
   args: {},
   handler: async (ctx) => {
@@ -26,6 +28,8 @@ export const get = query({
   },
 });
 
+
+//& get by id
 export const getById = query({
   args: { eventId: v.id("events") },
   handler: async (ctx, { eventId }) => {
@@ -61,7 +65,7 @@ export const create = mutation({
   },
 });
 
-// Helper function to check ticket availability for an event
+//* Helper function to check ticket availability for an event
 export const checkAvailability = query({
   args: { eventId: v.id("events") },
   handler: async (ctx, { eventId }) => {
@@ -107,7 +111,9 @@ export const checkAvailability = query({
   },
 });
 
-// Join waiting list for an event
+
+
+//^ Join waiting list for an event
 export const joinWaitingList = mutation({
   // Function takes an event ID and user ID as arguments
   args: { eventId: v.id("events"), userId: v.string() },
@@ -187,7 +193,7 @@ export const joinWaitingList = mutation({
 });
 
 
-// Purchase ticket
+//* Purchase ticket
 export const purchaseTicket = mutation({
   args: {
     eventId: v.id("events"),
@@ -275,6 +281,28 @@ export const purchaseTicket = mutation({
 });
 
 
+//* Get user's tickets with event information
+export const getUserTickets = query({
+  args: { userId: v.string() },
+  handler: async (ctx, { userId }) => {
+    const tickets = await ctx.db
+      .query("tickets")
+      .withIndex("by_user", (q) => q.eq("userId", userId))
+      .collect();
+
+    const ticketsWithEvents = await Promise.all(
+      tickets.map(async (ticket) => {
+        const event = await ctx.db.get(ticket.eventId);
+        return {
+          ...ticket,
+          event,
+        };
+      })
+    );
+
+    return ticketsWithEvents;
+  },
+});
 
 
 
@@ -284,6 +312,9 @@ export const purchaseTicket = mutation({
 
 
 
+
+
+//^ get event availability
 export const getEventAvailability = query({
   args: { eventId: v.id("events") },
   handler: async (ctx, { eventId }) => {
@@ -329,6 +360,10 @@ export const getEventAvailability = query({
   },
 });
 
+
+
+
+//&  update event
 export const updateEvent = mutation({
   args: {
     eventId: v.id("events"),
